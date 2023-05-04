@@ -25,15 +25,15 @@ func getLastDigit(n int64) int {
 	if n == 0 {
 		return 0
 	}
-	v1, v2, v3 := 1, 1, 0
+	value1, value2, value3 := 1, 1, 0
 	for _, rec := range fmt.Sprintf("%b", n)[1:] {
-		calc := (v2 * v2) % 10
-		v1, v2, v3 = (v1*v1+calc)%10, ((v1+v3)*v2)%10, (calc+v3*v3)%10
+		c := (value2 * value2) % 10
+		value1, value2, value3 = (value1*value1+c)%10, ((value1+value3)*value2)%10, (c+value3*value3)%10
 		if rec == '1' {
-			v1, v2, v3 = (v1+v2)%10, v1, v2
+			value1, value2, value3 = (value1+value2)%10, value1, value2
 		}
 	}
-	return v2
+	return value2
 }
 
 func question2() {
